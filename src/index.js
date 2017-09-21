@@ -87,10 +87,13 @@ export default class CsvDownload extends Component {
     }
 
     const a = document.createElement('a');
+    a.style.display = 'none';
     a.textContent = 'download';
     a.download = filename;
     a.href = `data:text/csv;charset=utf-8,${bomCode}${encodeURIComponent(this.state.csv)}`;
+    document.body.appendChild(a);
     a.click();
+    document.body.removeChild(a);
   }
 
   render() {
